@@ -17,6 +17,17 @@ The system extracts medical entities, applies safety guardrails for PII redactio
 
 ---
 
+## Application Preview
+
+### Streamlit Interface
+![App UI](assets/app-ui.png)
+
+### Entity Extraction
+![Entities](assets/entities.png)
+
+### Patient Summary
+![Summary](assets/summary.png)
+
 ## Tech Stack
 
 **Backend**
