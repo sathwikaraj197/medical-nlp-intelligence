@@ -1,0 +1,23 @@
+# Core ML / NLP
+torch
+torchvision
+transformers
+spacy
+
+# OCR
+easyocr
+Pillow
+
+# API & Web
+fastapi
+uvicorn
+streamlit
+pydantic
+
+# Data Processing
+numpy
+pandas
+
+# Utilities
+python-dotenv
+PyYAML
