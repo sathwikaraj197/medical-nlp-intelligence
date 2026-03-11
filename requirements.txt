@@ -25,5 +25,4 @@ numpy
 python-dotenv
 PyYAML
 
-sentencepiece
-transformers pinned version
+
