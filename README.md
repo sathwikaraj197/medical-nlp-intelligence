@@ -1,6 +1,6 @@
 
 
-# Medical NLP Intelligence System 🏥
+# Medical NLP Intelligence System 
 
 An AI-powered web application for analyzing clinical text using Natural Language Processing (NLP).  
 The system extracts medical entities, applies safety guardrails to redact sensitive data, and generates both clinical and patient-friendly summaries.
@@ -9,19 +9,19 @@ The system extracts medical entities, applies safety guardrails to redact sensit
 
 ## Features
 
-- 🔍 **Medical Entity Extraction**
+- **Medical Entity Extraction**
   - Detects medical conditions and key clinical terms from text.
 
-- 🔒 **Safety Guardrails**
+- **Safety Guardrails**
   - Automatically redacts sensitive information such as SSNs or personal identifiers.
 
-- 🩺 **Clinical Summary**
+- **Clinical Summary**
   - Generates concise summaries for healthcare professionals.
 
-- 👤 **Patient-Friendly Explanation**
+- **Patient-Friendly Explanation**
   - Provides simplified explanations of medical information.
 
-- 🖥 **Interactive Web Interface**
+- **Interactive Web Interface**
   - Built using Streamlit for easy interaction.
 
 ---
@@ -38,7 +38,7 @@ The system extracts medical entities, applies safety guardrails to redact sensit
 ---
 
 ## Project Architecture
-# Medical NLP Intelligence System 🏥
+# Medical NLP Intelligence System 
 
 An AI-powered web application for analyzing clinical text using Natural Language Processing (NLP).  
 The system extracts medical entities, applies safety guardrails to redact sensitive data, and generates both clinical and patient-friendly summaries.
@@ -47,19 +47,19 @@ The system extracts medical entities, applies safety guardrails to redact sensit
 
 ## Features
 
-- 🔍 **Medical Entity Extraction**
+- **Medical Entity Extraction**
   - Detects medical conditions and key clinical terms from text.
 
-- 🔒 **Safety Guardrails**
+- **Safety Guardrails**
   - Automatically redacts sensitive information such as SSNs or personal identifiers.
 
-- 🩺 **Clinical Summary**
+- **Clinical Summary**
   - Generates concise summaries for healthcare professionals.
 
-- 👤 **Patient-Friendly Explanation**
+- **Patient-Friendly Explanation**
   - Provides simplified explanations of medical information.
 
-- 🖥 **Interactive Web Interface**
+- **Interactive Web Interface**
   - Built using Streamlit for easy interaction.
 
 ---
