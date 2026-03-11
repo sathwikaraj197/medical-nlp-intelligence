@@ -1,10 +1,13 @@
-# Core ML / NLP
-torch
-torchvision
-transformers
-spacy
+# Core ML
+torch==2.2.2
+torchvision==0.17.2
+transformers==4.41.2
+sentencepiece
+datasets
+scikit-learn
 
-# OCR
+# NLP
+spacy
 easyocr
 Pillow
 
@@ -15,9 +18,12 @@ streamlit
 pydantic
 
 # Data Processing
-numpy
 pandas
+numpy
 
 # Utilities
 python-dotenv
 PyYAML
+
+sentencepiece
+transformers pinned version
