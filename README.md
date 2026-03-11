@@ -38,22 +38,18 @@ The system extracts medical entities, applies safety guardrails for PII redactio
 
 ---
 
-## Application Preview
-
-### Medical Text Analysis
-![App UI](assets/app-ui.png)
-
-### Entity Extraction
-![Entities](assets/entity-results.png)
-
-### Patient Summary
-![Summary](assets/patient-summary.png)
-
----
-
 ## Installation
 
 ```bash
 git clone https://github.com/YOUR_USERNAME/medical-nlp-intelligence.git
 cd medical-nlp-intelligence
 pip install -r requirements.txt
+
+## **Install Dependencies**
+pip install -r requirements.txt
+
+## **Run backend API**
+uvicorn src.api.main:app --reload
+
+## **Run the streamlit frontend**
+streamlit run app.py
