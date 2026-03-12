@@ -1,6 +1,7 @@
 # Core ML
 torch
 torchvision
+TOKENIZERS==0.19.1
 transformers==4.41.2
 sentencepiece
 datasets
