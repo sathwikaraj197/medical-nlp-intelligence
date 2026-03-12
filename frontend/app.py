@@ -6,7 +6,7 @@ import numpy as np
 from PIL import Image
 
 # Configuration
-API_URL = "http://127.0.0.1:8000/analyze"
+API_URL = "https://medical-nlp-api-ej42.onrender.com/analyze"
 
 st.set_page_config(
     page_title="Medical NLP Intelligence",
