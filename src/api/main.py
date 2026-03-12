@@ -22,12 +22,21 @@ except Exception as e:
 
 from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
 
-tokenizer = AutoTokenizer.from_pretrained("google/flan-t5-small")
-summarizer_model = AutoModelForSeq2SeqLM.from_pretrained("google/flan-t5-small")
+tokenizer = None
+summarizer_model = None
+
+def load_summarizer():
+    global tokenizer, summarizer_model
+    if tokenizer is None or summarizer_model is None:
+        tokenizer = AutoTokenizer.from_pretrained("google/flan-t5-small")
+        summarizer_model = AutoModelForSeq2SeqLM.from_pretrained("google/flan-t5-small")
 
 def summarize(prompt, max_length=120):
+    load_summarizer()
+
     inputs = tokenizer(prompt, return_tensors="pt")
     outputs = summarizer_model.generate(**inputs, max_new_tokens=max_length)
+
     return tokenizer.decode(outputs[0], skip_special_tokens=True)
 
 class AnalyzeRequest(BaseModel):
