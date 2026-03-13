@@ -6,18 +6,22 @@ from src.preprocessing.cleaner import clean_text
 from src.safety.guardrails import SafetyChecker
 from src.entity_extraction.ner import MedicalNER
 from src.entity_extraction.glossary import MedicalGlossary
-from transformers import pipeline
 
 app = FastAPI(title="Medical NLP Intelligence API", version="0.1.0")
 
 # Initialize components
 safety_checker = SafetyChecker()
 glossary = MedicalGlossary()
-try:
-    ner_engine = MedicalNER(glossary_terms=glossary.get_terms())
-except Exception as e:
-    print(f"Failed to initialize NER engine: {e}")
-    ner_engine = None
+
+ner_engine = None
+
+def load_ner():
+    global ner_engine
+    if ner_engine is None:
+        try:
+            ner_engine = MedicalNER(glossary_terms=glossary.get_terms())
+        except Exception as e:
+            print(f"Failed to initialize NER engine: {e}")
     # Initialize summarization model
 
 from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
@@ -69,9 +73,13 @@ async def analyze_text(request: AnalyzeRequest):
     cleaned = clean_text(redacted_text)
 
     # 3. Entity Extraction
-    entities_out = []
-    if ner_engine and ner_engine.nlp:
-        raw_entities = ner_engine.extract_entities(cleaned)
+   # 3. Entity Extraction
+entities_out = []
+
+load_ner()
+
+if ner_engine and ner_engine.nlp:
+    raw_entities = ner_engine.extract_entities(cleaned)
 
         for ent in raw_entities:
             std_term = glossary.normalize_term(ent["text"])
