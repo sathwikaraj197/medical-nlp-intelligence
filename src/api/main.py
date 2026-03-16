@@ -81,17 +81,17 @@ load_ner()
 if ner_engine and ner_engine.nlp:
     raw_entities = ner_engine.extract_entities(cleaned)
 
-        for ent in raw_entities:
-            std_term = glossary.normalize_term(ent["text"])
-            entities_out.append(Entity(
-                text=ent["text"],
-                label=ent["label"],
-                confidence=ent["confidence"],
-                standardized_term=std_term if std_term != ent["text"].lower() else None,
-                start=ent["start"],
-                end=ent["end"]
-            ))
+    for ent in raw_entities:
+        std_term = glossary.normalize_term(ent["text"])
 
+        entities_out.append(Entity(
+            text=ent["text"],
+            label=ent["label"],
+            confidence=ent["confidence"],
+            standardized_term=std_term if std_term != ent["text"].lower() else None,
+            start=ent["start"],
+            end=ent["end"]
+        ))
     # ---------------- SUMMARIZATION ----------------
 
     clinical_summary = None
