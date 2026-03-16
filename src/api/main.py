@@ -65,32 +65,30 @@ class AnalyzeResponse(BaseModel):
 @app.post("/analyze", response_model=AnalyzeResponse)
 async def analyze_text(request: AnalyzeRequest):
 
-    # 1. Safety Check
+    # Safety
     safety_result = safety_checker.check_content_safety(request.text)
     redacted_text = safety_checker.audit_pii(request.text)
 
-    # 2. Preprocessing
+    # Preprocessing
     cleaned = clean_text(redacted_text)
 
-    # 3. Entity Extraction
-   # 3. Entity Extraction
-entities_out = []
+    # Entity Extraction
+    entities_out = []
 
-load_ner()
+    if ner_engine and ner_engine.nlp:
+        raw_entities = ner_engine.extract_entities(cleaned)
 
-if ner_engine and ner_engine.nlp:
-    raw_entities = ner_engine.extract_entities(cleaned)
-    for ent in raw_entities:
-        std_term = glossary.normalize_term(ent["text"])
-        entities_out.append(Entity(
-            text=ent["text"],
-            label=ent["label"],
-            confidence=ent["confidence"],
-            standardized_term=std_term if std_term != ent["text"].lower() else None,
-            start=ent["start"],
-            end=ent["end"]
-        ))
-    # ---------------- SUMMARIZATION ----------------
+        for ent in raw_entities:
+            std_term = glossary.normalize_term(ent["text"])
+
+            entities_out.append(Entity(
+                text=ent["text"],
+                label=ent["label"],
+                confidence=ent["confidence"],
+                standardized_term=std_term if std_term != ent["text"].lower() else None,
+                start=ent["start"],
+                end=ent["end"]
+            ))
 
     clinical_summary = None
     patient_summary = None
@@ -104,8 +102,6 @@ if ner_engine and ner_engine.nlp:
             patient_summary = summarize(patient_prompt)
         except Exception as e:
             print("Summary error:", e)
-
-    # --------------- RETURN ----------------
 
     return AnalyzeResponse(
         original_text_length=len(request.text),
