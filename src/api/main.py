@@ -80,10 +80,8 @@ load_ner()
 
 if ner_engine and ner_engine.nlp:
     raw_entities = ner_engine.extract_entities(cleaned)
-
     for ent in raw_entities:
         std_term = glossary.normalize_term(ent["text"])
-
         entities_out.append(Entity(
             text=ent["text"],
             label=ent["label"],
